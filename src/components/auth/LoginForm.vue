@@ -3,7 +3,7 @@
         <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
         <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
         <div class="text-right">
-            <router-link :to="{ name: 'recovery' }" class="text-green-500">Forgot your password?</router-link>
+            <router-link :to="{ name: 'recovery' }" class="text-green-500" tabindex="-1">Forgot your password?</router-link>
         </div>
         <div class="">
             <button type="submit" class="rounded-lg font-bold p-4 bg-green-400 text-green-100">LOGIN</button>
