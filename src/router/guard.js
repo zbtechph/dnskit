@@ -12,7 +12,7 @@ export default (to, from) => {
         return { name: "home" }
     }
 
-    if(!loggedIn && to.meta.requiresAuth){
+    if (!loggedIn && to.meta.requiresAuth) {
         return { name: "login", query: { redirect: to.fullPath } }
     }
 
