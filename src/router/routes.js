@@ -8,7 +8,10 @@ export default [
     {
         name: 'account',
         path: '/account',
-        component: () => import('../pages/Account.vue')
+        component: () => import('../pages/Account.vue'),
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         name: 'login',
@@ -17,7 +20,7 @@ export default [
     },
     {
         name: 'register',
-        path: '/register',
+        path: '/signup',
         component: () => import('../pages/auth/Register.vue')
     },
     {
