@@ -3,7 +3,11 @@
         <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
         <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
         <div class="text-right">
-            <router-link :to="{ name: 'recovery' }" class="text-green-500" tabindex="-1">Forgot your password?</router-link>
+            <router-link
+                :to="{ name: 'recovery' }"
+                class="text-green-500"
+                tabindex="-1"
+            >Forgot your password?</router-link>
         </div>
     </zb-form>
 </template>
@@ -30,11 +34,11 @@ const emit = defineEmits(["loggedIn"])
 const attemptLogin = async () => {
     state.loader = true;
     store.dispatch("session/login", state.credential)
-        .then(user=>{
-            if(user) emit("loggedIn")
-        }).catch(error=>{
+        .then(user => {
+            if (user) emit("loggedIn")
+        }).catch(error => {
             state.error = error.message
-        }).finally(()=>{
+        }).finally(() => {
             state.loader = false;
             state.credential.password = "";
         })

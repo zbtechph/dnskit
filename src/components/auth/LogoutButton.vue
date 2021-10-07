@@ -1,5 +1,7 @@
 <template>
-    <button type="button" :class="classes" @click="btnClick"><slot>Logout</slot></button>
+    <button type="button" :class="classes" @click="btnClick">
+        <slot>Logout</slot>
+    </button>
 </template>
 
 <script setup>
@@ -9,7 +11,7 @@ const store = useStore()
 
 const props = defineProps({
     classes: {
-        type: [ String, Array ]
+        type: [String, Array]
     }
 })
 

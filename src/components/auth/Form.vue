@@ -3,7 +3,7 @@
         <zb-alert v-if="props.errors" type="danger">{{ errors }}</zb-alert>
         <slot></slot>
         <div>
-        <zb-primary-button :disabled="props.loader">{{ props.btnText }}</zb-primary-button>
+            <zb-primary-button :disabled="props.loader">{{ props.btnText }}</zb-primary-button>
         </div>
     </form>
 </template>

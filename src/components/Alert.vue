@@ -21,7 +21,7 @@ const alertTypes = ref({
     warning: "border-yellow-500 bg-yellow-100 text-yellow-500"
 })
 
-const classes = computed(()=>{
+const classes = computed(() => {
     return alertTypes.value[props.type]
 })
 

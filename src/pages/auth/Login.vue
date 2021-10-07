@@ -1,14 +1,18 @@
 <template>
     <zb-single-page title="Welcome back!">
-        <template v-slot:description>
-            Login to start using our services.
-        </template>
+        <template v-slot:description>Login to start using our services.</template>
         <template v-slot:content>
             <div class="flex">
-                <button type="button" class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold">Log in with Google</button>
+                <button
+                    type="button"
+                    class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold"
+                >Log in with Google</button>
             </div>
-            <zb-login-form @loggedIn="loggedIn"/>
-            <p class="py-4">Don't have an account? <router-link class="text-green-500" :to="{name:'register'}">Signup</router-link></p>
+            <zb-login-form @loggedIn="loggedIn" />
+            <p class="py-4">
+                Don't have an account?
+                <router-link class="text-green-500" :to="{ name: 'register' }">Signup</router-link>
+            </p>
         </template>
     </zb-single-page>
 </template>
