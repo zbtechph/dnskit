@@ -6,5 +6,6 @@ export default {
         user: null
     }),
     mutations,
-    actions
+    actions,
+    namespaced: true
 }
