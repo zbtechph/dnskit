@@ -1,10 +1,7 @@
 <template>
-    <zb-form @formSubmit="attemptLogin" :loader="state.loader" :errors="state.error">
+    <zb-form @formSubmit="createAccount" :loader="state.loader" :errors="state.error">
         <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
         <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
-        <div class="text-right">
-            <router-link :to="{ name: 'recovery' }" class="text-green-500" tabindex="-1">Forgot your password?</router-link>
-        </div>
     </zb-form>
 </template>
 
@@ -22,7 +19,7 @@ const state = reactive({
     loader: false
 })
 
-const attemptLogin = () => {
+const createAccount = () => {
     state.loader = true;
 
 }
