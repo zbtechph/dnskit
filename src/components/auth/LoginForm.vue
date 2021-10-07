@@ -25,11 +25,13 @@ const state = reactive({
     loader: false
 })
 
+const emit = defineEmits(["loggedIn"])
+
 const attemptLogin = async () => {
     state.loader = true;
     store.dispatch("session/login", state.credential)
         .then(user=>{
-            if(user) emit.loggedIn
+            if(user) emit("loggedIn")
         }).catch(error=>{
             state.error = error.message
         }).finally(()=>{
@@ -37,9 +39,5 @@ const attemptLogin = async () => {
             state.credential.password = "";
         })
 }
-
-const emit = defineEmits({
-    loggedIn : "loggedIn"
-})
 
 </script>
