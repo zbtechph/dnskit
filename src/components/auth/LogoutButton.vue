@@ -13,8 +13,11 @@ const props = defineProps({
     }
 })
 
+const emit = defineEmits(["logoutBtnClick"])
+
 const btnClick = async () => {
     await store.dispatch("session/logout");
+    emit("logoutBtnClick");
 }
 
 </script>

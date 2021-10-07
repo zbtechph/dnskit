@@ -1,5 +1,5 @@
 <template>
-    <zb-form @formSubmit="attemptLogin" :loader="state.loader" :errors="state.error">
+    <zb-form @form-submit="attemptLogin" :loader="state.loader" :errors="state.error">
         <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
         <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
         <div class="text-right">
