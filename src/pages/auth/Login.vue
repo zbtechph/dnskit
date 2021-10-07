@@ -7,7 +7,7 @@
             <div class="flex">
                 <button type="button" class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold">Log in with Google</button>
             </div>
-            <zb-login-form/>
+            <zb-login-form @loggedIn="loggedIn"/>
             <p class="py-4">Don't have an account? <router-link class="text-green-500" :to="{name:'register'}">Signup</router-link></p>
         </template>
     </zb-single-page>
@@ -16,4 +16,12 @@
 <script setup>
 import ZbSinglePage from '../../components/auth/SinglePage.vue'
 import ZbLoginForm from '../../components/auth/LoginForm.vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const loggedIn = () => {
+    router.push("/")
+}
+
 </script>

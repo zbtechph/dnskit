@@ -4,11 +4,15 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
+  import { computed, onMounted } from 'vue'
   import { useStore } from 'vuex'
   import ZbNavigationTop from './components/ui/NavigationTop.vue'
 
   const store = useStore();
   const user = computed(()=>store.state.session.user)
   
+  onMounted(()=>{
+    store.dispatch("session/authStateObserver");
+  })
+
 </script>

@@ -12,6 +12,9 @@
 import { reactive } from 'vue'
 import ZbForm from './Form.vue'
 import ZbFormInput from './Input.vue'
+import { useStore } from 'vuex'
+
+const store = useStore();
 
 const state = reactive({
     error: null,
@@ -22,9 +25,21 @@ const state = reactive({
     loader: false
 })
 
-const attemptLogin = () => {
+const attemptLogin = async () => {
     state.loader = true;
-
+    store.dispatch("session/login", state.credential)
+        .then(user=>{
+            if(user) emit.loggedIn
+        }).catch(error=>{
+            state.error = error.message
+        }).finally(()=>{
+            state.loader = false;
+            state.credential.password = "";
+        })
 }
+
+const emit = defineEmits({
+    loggedIn : "loggedIn"
+})
 
 </script>

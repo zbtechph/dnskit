@@ -3,14 +3,18 @@
 </template>
 
 <script setup>
+import { useStore } from 'vuex'
+
+const store = useStore()
+
 const props = defineProps({
     classes: {
         type: [ String, Array ]
     }
 })
 
-const btnClick = () => {
-    alert("Logout button click!")
+const btnClick = async () => {
+    await store.dispatch("session/logout");
 }
 
 </script>
