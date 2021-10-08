@@ -7,9 +7,11 @@
 
 <script setup>
 import { reactive } from 'vue'
+import { useStore } from 'vuex'
 import ZbForm from './Form.vue'
 import ZbFormInput from './Input.vue'
 
+const store = useStore()
 const state = reactive({
     error: null,
     credential: {
@@ -23,7 +25,7 @@ const emit = defineEmits(["accountCreated"])
 
 const createAccount = () => {
     state.loader = true;
-    state.dispatch("session/signup", state.credential)
+    store.dispatch("session/signup", state.credential)
         .then(user => {
             if (user) emit("accountCreated")
         }).catch(error => {
