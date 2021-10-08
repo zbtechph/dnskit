@@ -19,16 +19,19 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import ZbSinglePage from '../../components/auth/SinglePage.vue'
 import ZbLoginForm from '../../components/auth/LoginForm.vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
 const store = useStore()
+const route = useRoute()
 const router = useRouter()
+const redirect = computed( () => route.query.redirect || '/')
 
 const loggedIn = () => {
-    router.push("/")
+    router.push(redirect.value)
 }
 
 </script>
