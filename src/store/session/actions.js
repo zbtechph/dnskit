@@ -36,7 +36,7 @@ export default {
     async resetPassword({ commit }, payload) {
         const { email } = payload
         const { data, error } = await supabase.auth.api.resetPasswordForEmail(email)
-        if(error) throw new Error(error.message)
+        if (error) throw new Error(error.message)
         return data;
     }
 
