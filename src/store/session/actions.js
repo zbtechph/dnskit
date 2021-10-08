@@ -15,15 +15,22 @@ export default {
         return user;
     },
 
-    async logout({ commit }) {
-        await supabase.auth.signOut()
-        commit("SET_USER", null)
-    },
-
     async loginWith({ commit }, payload) {
         const { user, error } = await supabase.auth.signIn({ provider: payload })
         if (error) throw new Error(error.message)
         return user;
-    }
+    },
+
+    async signup({ commit }, payload) {
+        const { email, password } = payload
+        const { user, error } = await supabase.auth.signUp({ email, password })
+        if (error) throw new Error(error.message)
+        return user;
+    },
+
+    async logout({ commit }) {
+        await supabase.auth.signOut()
+        commit("SET_USER", null)
+    },
 
 }
