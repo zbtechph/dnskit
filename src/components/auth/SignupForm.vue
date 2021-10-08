@@ -19,9 +19,19 @@ const state = reactive({
     loader: false
 })
 
+const emit = defineEmits(["accountCreated"])
+
 const createAccount = () => {
     state.loader = true;
-
+    state.dispatch("session/signup", state.credential)
+        .then(user => {
+            if (user) emit("accountCreated")
+        }).catch(error => {
+            state.error = error.message
+        }).finally(() => {
+            state.password = "";
+            state.loader = false;
+        })
 }
 
 </script>
