@@ -20,10 +20,12 @@
 
 <script setup>
 import { computed } from 'vue'
+import { useStore } from 'vuex'
+import { useRoute, useRouter } from 'vue-router'
 import ZbSinglePage from '../../components/auth/SinglePage.vue'
 import ZbLoginForm from '../../components/auth/LoginForm.vue'
-import { useRoute, useRouter } from 'vue-router'
 
+const store = useStore()
 const route = useRoute()
 const router = useRouter()
 const redirect = computed(() => route.query.redirect || '/')
