@@ -6,6 +6,7 @@
                 <button
                     type="button"
                     class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold"
+                    @click="store.dispatch('session/loginWith','google')"
                 >Log in with Google</button>
             </div>
             <zb-login-form @loggedIn="loggedIn" />
@@ -21,7 +22,9 @@
 import ZbSinglePage from '../../components/auth/SinglePage.vue'
 import ZbLoginForm from '../../components/auth/LoginForm.vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
+const store = useStore()
 const router = useRouter()
 
 const loggedIn = () => {

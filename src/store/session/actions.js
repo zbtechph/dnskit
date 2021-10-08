@@ -18,6 +18,12 @@ export default {
     async logout({ commit }) {
         await supabase.auth.signOut()
         commit("SET_USER", null)
+    },
+
+    async loginWith({ commit }, payload) {
+        const { user, error } = await supabase.auth.signIn({ provider: payload })
+        if (error) throw new Error(error.message)
+        return user;
     }
 
 }
