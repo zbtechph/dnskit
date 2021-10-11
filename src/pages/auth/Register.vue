@@ -2,10 +2,10 @@
     <zb-single-page title="Join us!">
         <template v-slot:description>Create an account to manage your dns records</template>
         <template v-slot:content>
-            <div class="flex">
+            <div class="py-4">
                 <button
                     type="button"
-                    class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold"
+                    class="btn btn-primary"
                     @click="store.dispatch('session/loginWith', 'google')"
                 >Signup with Google</button>
             </div>

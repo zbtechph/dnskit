@@ -1,5 +1,5 @@
 <template>
-    <button type="button" :class="classes" @click="btnClick">
+    <button class="btn btn-danger" type="button" @click="btnClick">
         <slot>Logout</slot>
     </button>
 </template>
@@ -8,12 +8,6 @@
 import { useStore } from 'vuex'
 
 const store = useStore()
-
-const props = defineProps({
-    classes: {
-        type: [String, Array]
-    }
-})
 
 const emit = defineEmits(["logoutBtnClick"])
 

@@ -2,10 +2,10 @@
     <zb-single-page title="Welcome back!">
         <template v-slot:description>Login to start using our services.</template>
         <template v-slot:content>
-            <div class="flex">
+            <div class="py-4">
                 <button
                     type="button"
-                    class="w-full bg-blue-500 text-blue-100 p-3 rounded font-bold"
+                    class="btn btn-primary"
                     @click="store.dispatch('session/loginWith', 'google')"
                 >Log in with Google</button>
             </div>

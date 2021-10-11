@@ -1,17 +1,15 @@
 <template>
-    <div class="flex flex-wrap md:h-screen text-gray-500">
-        <div
-            class="w-full bg-no-repeat bg-cover h-52 md:w-1/2 md:h-full"
-            style="background-image:url('https://i.ibb.co/mHy7W9t/ivana-cajina-d-Qej-X2uc-PBs-unsplash.jpg')"
-        ></div>
-        <div class="w-full md:w-1/2 md:order-first p-8">
-            <div class="py-8">
-                <h1 class="text-4xl font-semibold text-gray-600" v-text="props.title"></h1>
-                <p class="text-gray-400">
-                    <slot name="description"></slot>
-                </p>
+    <div class="container-fluid">
+        <div class="row vh-100">
+            <div class="col-12 col-md-6 order-md-last d-none d-md-block" style="background-image:url('https://i.ibb.co/mHy7W9t/ivana-cajina-d-Qej-X2uc-PBs-unsplash.jpg');background-repeat: no-repeat; background-size:cover"></div>
+            <div class="col-12 col-md-6 px-5">
+                <div class="pt-5">
+                    <h1 v-text="props.title"></h1>
+                    <p><slot name="description"></slot></p>
+                </div>
+                <slot name="content"></slot>
             </div>
-            <slot name="content"></slot>
+            
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
     <form action="/" method="POST" @submit.prevent="$emit('formSubmit')">
         <zb-alert v-if="props.errors" type="danger">{{ errors }}</zb-alert>
         <slot></slot>
-        <div>
+        <div class="d-grid gap-2 py-3">
             <zb-primary-button :disabled="props.loader">{{ props.btnText }}</zb-primary-button>
         </div>
     </form>

@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="props.to" class="p-3 border-b" exact-active-class="border-blue-500"><slot></slot></router-link>
+    <router-link :to="props.to" class="nav-link" exact-active-class="active"><slot></slot></router-link>
 </template>
 
 <script setup>
