@@ -2,7 +2,7 @@
     <zb-single-page title="Forgot your password?">
         <template v-slot:description>Fill in your email to reset your password.</template>
         <template v-slot:content>
-            <zb-recovery-form @recovery-email-sent="recoveryEmailSent" v-if="!sent" />
+            <zb-recovery-form size="lg" @recovery-email-sent="recoveryEmailSent" v-if="!sent" />
             <zb-alert
                 type="primary"
                 v-else

@@ -1,7 +1,7 @@
 <template>
-    <zb-form @form-submit="attemptLogin" :loader="state.loader" :errors="state.error">
-        <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
-        <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
+    <zb-form :size="size" @form-submit="attemptLogin" :loader="state.loader" :errors="state.error" >
+        <zb-form-input label="Email Address" v-model="state.credential.email" :size="size"></zb-form-input>
+        <zb-form-input label="Password" v-model="state.credential.password" type="password" :size="size"></zb-form-input>
         <div class="text-right">
             <router-link
                 :to="{ name: 'recovery' }"
@@ -14,12 +14,11 @@
 
 <script setup>
 import { reactive } from 'vue'
-import ZbForm from './Form.vue'
-import ZbFormInput from './Input.vue'
+import ZbForm from '../Form.vue'
+import ZbFormInput from '../Input.vue'
 import { useStore } from 'vuex'
 
-const store = useStore();
-
+const store = useStore()
 const state = reactive({
     error: null,
     credential: {
@@ -29,7 +28,9 @@ const state = reactive({
     loader: false
 })
 
-const emit = defineEmits(["loggedIn"])
+const props = defineProps({
+    size: String
+})
 
 const attemptLogin = async () => {
     state.loader = true;
@@ -43,5 +44,7 @@ const attemptLogin = async () => {
             state.credential.password = "";
         })
 }
+
+const emit = defineEmits(["loggedIn"])
 
 </script>

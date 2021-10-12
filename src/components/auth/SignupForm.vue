@@ -1,15 +1,15 @@
 <template>
-    <zb-form @formSubmit="createAccount" :loader="state.loader" :errors="state.error">
-        <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
-        <zb-form-input label="Password" v-model="state.credential.password" type="password"></zb-form-input>
+    <zb-form :size="props.size" @formSubmit="createAccount" :loader="state.loader" :errors="state.error">
+        <zb-form-input label="Email Address" v-model="state.credential.email" :size="props.size"></zb-form-input>
+        <zb-form-input label="Password" v-model="state.credential.password" type="password" :size="props.size"></zb-form-input>
     </zb-form>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
 import { useStore } from 'vuex'
-import ZbForm from './Form.vue'
-import ZbFormInput from './Input.vue'
+import ZbForm from '../Form.vue'
+import ZbFormInput from '../Input.vue'
 
 const store = useStore()
 const state = reactive({
@@ -20,8 +20,9 @@ const state = reactive({
     },
     loader: false
 })
-
-const emit = defineEmits(["accountCreated"])
+const props = defineProps({
+    size: String
+})
 
 const createAccount = () => {
     state.loader = true;
@@ -35,5 +36,7 @@ const createAccount = () => {
             state.loader = false;
         })
 }
+
+const emit = defineEmits(["accountCreated"])
 
 </script>

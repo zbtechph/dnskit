@@ -4,8 +4,10 @@
         <input
             :type="props.type"
             class="form-control"
-            :value="modelValue"
+            :class="sizeClass"
+            :value="props.modelValue"
             :required="props.required"
+            :readonly="props.readonly"
             @input="$emit('update:modelValue', $event.target.value)"
         />
         <slot></slot>
@@ -13,6 +15,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
     label: String,
     required: {
@@ -23,8 +27,18 @@ const props = defineProps({
         type: String,
         default: "text"
     },
-    modelValue: String
+    readonly: {
+        type: Boolean,
+        default: false
+    },
+    size: {
+        type: String,
+        default: "md"
+    },
+    modelValue: String,
 })
+
+const sizeClass = computed(()=>`form-control-${props.size}`)
 
 defineEmits(['update:modelValue'])
 </script>

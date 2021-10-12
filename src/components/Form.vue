@@ -3,14 +3,15 @@
         <zb-alert v-if="props.errors" type="danger">{{ errors }}</zb-alert>
         <slot></slot>
         <div class="d-grid gap-2 py-3">
-            <zb-primary-button :disabled="props.loader">{{ props.btnText }}</zb-primary-button>
+            <zb-button type="submit" :class="btnSize" color="success" :disabled="props.loader">{{ props.btnText }}</zb-button>
         </div>
     </form>
 </template>
 
 <script setup>
-import ZbAlert from '../Alert.vue'
-import ZbPrimaryButton from './PrimaryButton.vue'
+import { computed } from 'vue'
+import ZbAlert from './Alert.vue'
+import ZbButton from './Button.vue'
 
 const props = defineProps({
     errors: String,
@@ -21,8 +22,14 @@ const props = defineProps({
     btnText: {
         type: String,
         default: "Submit"
+    },
+    size: {
+        type: String,
+        default: "md"
     }
 })
+
+const btnSize = computed(()=>`btn-${props.size}`)
 
 defineEmits(['formSubmit'])
 

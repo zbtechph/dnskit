@@ -1,14 +1,14 @@
 <template>
-    <zb-form @formSubmit="sendRecoveryLink" :loader="state.loader" :errors="state.error">
-        <zb-form-input label="Email Address" v-model="state.credential.email"></zb-form-input>
+    <zb-form :size="props.size" @formSubmit="sendRecoveryLink" :loader="state.loader" :errors="state.error">
+        <zb-form-input label="Email Address" v-model="state.credential.email" :size="props.size"></zb-form-input>
     </zb-form>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
 import { useStore } from 'vuex'
-import ZbForm from './Form.vue'
-import ZbFormInput from './Input.vue'
+import ZbForm from '../Form.vue'
+import ZbFormInput from '../Input.vue'
 
 const store = useStore()
 const state = reactive({
@@ -18,8 +18,9 @@ const state = reactive({
     },
     loader: false
 })
-
-const emit = defineEmits(["recoveryEmailSent"])
+const props = defineProps({
+    size: String
+})
 
 const sendRecoveryLink = () => {
     state.loader = true;
@@ -31,5 +32,7 @@ const sendRecoveryLink = () => {
             state.loader = false;
         })
 }
+
+const emit = defineEmits(["recoveryEmailSent"])
 
 </script>
